@@ -4,25 +4,37 @@ from bot import RSS_LIMIT, FILTER
 from urllib.parse import urlparse
 import logging
 
-# import requests
-# def get_rss_feed(rss_link, channel_name, limit):
-#
-#     rss_feed = requests.get(rss_link).json()
-#     return rss_feed
+import requests
+
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
+
+
+def get_rss_feed_sync(rss_link):
+    rss_feed = requests.get(rss_link).json()
+    return rss_feed
 
 
 async def get_rss_feed(channel_name):
     rss_link = (
         f"https://rsshub.app/telegram/channel/{channel_name}.json?limit={RSS_LIMIT}"
     )
-    async with aiohttp.ClientSession() as session:
-        async with session.get(rss_link) as resp:
-            rss_feed = await resp.json()
-            logger.info(f"Loaded rss_feed from {channel_name}")
-            return rss_feed
+    try:
+        async with aiohttp.ClientSession() as session:
+            async with session.get(rss_link) as resp:
+                rss_feed = await resp.json()
+                logger.info(f"Loaded rss_feed from {channel_name}")
+                return rss_feed
+    except Exception as e:
+        logger.error(
+            f"Got an error when receiving updates from {channel_name}.", exc_info=True
+        )
+        rss_feed = get_rss_feed_sync(rss_link)
+        logger.info(rss_feed.text)
+        logger.info(rss_feed.json())
+        rss_feed = rss_feed.json()
+        return rss_feed
 
 
 async def get_telegram_channel_posts(channel_name):
