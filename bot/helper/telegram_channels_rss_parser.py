@@ -1,11 +1,11 @@
-import aiohttp
-from bs4 import BeautifulSoup
-from bot import RSS_LIMIT, FILTER
-from urllib.parse import urlparse
 import logging
+from urllib.parse import urlparse
 
+import aiohttp
 import requests
+from bs4 import BeautifulSoup
 
+from bot import FILTER, RSS_LIMIT
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
@@ -26,7 +26,7 @@ async def get_rss_feed(channel_name):
                 rss_feed = await resp.json()
                 logger.info(f"Loaded rss_feed from {channel_name}")
                 return rss_feed
-    except Exception as e:
+    except Exception:
         logger.error(
             f"Got an error when receiving updates from {channel_name}.", exc_info=True
         )

@@ -1,0 +1,10 @@
+subreddits:
+  - name: privacy
+    period: month
+    limit: 10
+  - name: piracy
+    period: month
+    limit: 10
+  - name: selfhosted
+    period: month
+    limit: 10

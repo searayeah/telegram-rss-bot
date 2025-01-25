@@ -1,6 +1,7 @@
 from telegram import Update
+
 from bot import application
-from bot.modules import telegram_channels_rss
+from bot.modules import reddit  # pylint: disable=unused-import # noqa: F401
 
 
 def main():

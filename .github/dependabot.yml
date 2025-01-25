@@ -1,0 +1,27 @@
+version: 2
+
+updates:
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    groups:
+      python-packages:
+        patterns: ["*"]
+
+    # groups:
+    #   production-dependencies:
+    #     dependency-type: "production"
+    #   development-dependencies:
+    #     dependency-type: "development"
+    # # development-group = all poetry groups except
+    # # main (api,docs, tests etc.) including dev
+    # open-pull-requests-limit: 10
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    groups:
+      actions:
+        patterns: ["*"]

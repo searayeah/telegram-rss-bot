@@ -1,11 +1,11 @@
+from telegram.ext import CommandHandler, filters
+
+from bot import CHANNEL_URLS, FILTER_WORDS, TELEGRAM_CHAT_ID, UPDATE_TIME, application
 from bot.helper.telegram_channels_rss_parser import (
-    get_new_filtered_telegram_channel_posts,
     get_channel_name_from_url,
+    get_new_filtered_telegram_channel_posts,
     sanitize_html,
 )
-from bot import application
-from bot import TELEGRAM_CHAT_ID, CHANNEL_URLS, FILTER_WORDS, UPDATE_TIME
-from telegram.ext import CommandHandler, filters
 
 channels = [get_channel_name_from_url(channel_url) for channel_url in CHANNEL_URLS]
 current_channel_name_to_ids = {channel_name: {} for channel_name in channels}

@@ -1,6 +1,6 @@
 # telegram-rss-bot
 
-This is a Telegram bot for parsing __Telegram channels__ feeds through RSS.
+This is a Telegram bot for parsing **Telegram channels** feeds through RSS.
 
 ## Running
 
@@ -10,22 +10,22 @@ This is a Telegram bot for parsing __Telegram channels__ feeds through RSS.
 
 - Installing dependencies:
 
-    ```shell
-    pip install -r requirements
-    ```
+  ```shell
+  pip install -r requirements
+  ```
 
 - Setting environment variables. Use `.env` file and `load_dotenv` in `bot/__init__.py` or export:
 
-    ```shell
-    export TELEGRAM_TOKEN="YOUR_TELEGRAM_TOKEN"
-    export TELEGRAM_CHAT_ID="YOUR_TELEGRAM_CHAT_ID"
-    ```
+  ```shell
+  export TELEGRAM_TOKEN="YOUR_TELEGRAM_TOKEN"
+  export TELEGRAM_CHAT_ID="YOUR_TELEGRAM_CHAT_ID"
+  ```
 
 - Running:
 
-    ```shell
-    python -m bot
-    ```
+  ```shell
+  python -m bot
+  ```
 
 ### Docker image
 
