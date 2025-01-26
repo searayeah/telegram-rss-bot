@@ -1,10 +1,10 @@
-FROM python:3.10
+FROM python:3.12-alpine
 
-WORKDIR /app
-COPY requirements.txt .
+WORKDIR /usr/src/app
+
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
+
 COPY . .
-
-RUN pip install --upgrade pip \
-    &&  pip install -r requirements.txt
 
 CMD ["python3", "-m", "bot"]

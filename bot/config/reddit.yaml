@@ -1,10 +1,47 @@
 subreddits:
   - name: privacy
     period: month
-    limit: 10
+    limit: 20
   - name: piracy
     period: month
-    limit: 10
+    limit: 20
+    exclude_flairs: ["Humor"]
   - name: selfhosted
     period: month
-    limit: 10
+    limit: 20
+  - name: HeroesofNewerth
+    period: month
+    limit: 20
+  - name: aoe2
+    period: month
+    limit: 30
+    exclude_flairs: ["Meme"]
+  - name: osugame
+    period: month
+    limit: 30
+  - name: degoogle
+    period: month
+    limit: 20
+  - name: datascience
+    period: month
+    limit: 20
+  - name: python
+    period: month
+    limit: 30
+  - name: MachineLearning
+    period: month
+    limit: 30
+  - name: obsidianmd
+    period: month
+    limit: 30
+    exclude_flairs: ["showcase", "graph"]
+  - name: HelixEditor
+    period: month
+    limit: 30
+
+  - name: pihole
+    period: year
+    limit: 30
+  - name: fossdroid
+    period: year
+    limit: 30
