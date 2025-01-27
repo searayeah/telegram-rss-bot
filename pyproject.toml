@@ -4,14 +4,8 @@ version = "0.1.0"
 description = "Add your description here"
 requires-python = ">=3.12"
 dependencies = [
-    "feedparser>=6.0.11",
-    "ipywidgets",
-    "jupyterlab",
     "loguru>=0.7.3",
-    "matplotlib",
-    "numpy",
     "ollama>=0.4.1",
-    "pandas",
     "pymongo>=4.10.1",
     "python-dotenv>=1.0.1",
     "python-telegram-bot[job-queue]>=21.7",
@@ -34,11 +28,9 @@ dev = [
     "pre-commit",
     "pylint",
     "ruff",
-    "types-beautifulsoup4",
     "types-colorama",
     "types-decorator",
     "types-jsonschema",
-    "types-openpyxl",
     "types-pillow",
     "types-protobuf",
     "types-psutil",
@@ -46,11 +38,9 @@ dev = [
     "types-pyyaml",
     "types-regex",
     "types-requests",
-    "types-seaborn",
     "types-setuptools",
     "types-six",
     "types-tabulate",
-    "types-tqdm",
     "typing-extensions",
 ]
 

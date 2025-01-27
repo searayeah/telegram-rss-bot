@@ -12,7 +12,7 @@ logger.setLevel(logging.INFO)
 
 
 def get_rss_feed_sync(rss_link):
-    rss_feed = requests.get(rss_link).json()
+    rss_feed = requests.get(rss_link, timeout=20).json()
     return rss_feed
 
 
@@ -78,7 +78,8 @@ async def get_new_filtered_telegram_channel_posts(
     else:
         id_to_post_new_filtered = id_to_post_new
     logger.info(
-        f"{title}: {len(id_to_post_new)} new posts, found {len(id_to_post_new_filtered)} filtered posts"
+        f"{title}: {len(id_to_post_new)} new posts, "
+        f"found {len(id_to_post_new_filtered)} filtered posts"
     )
     return title, id_to_post_new_filtered
 

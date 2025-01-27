@@ -2,7 +2,6 @@ from dataclasses import dataclass, field
 from datetime import datetime, timedelta
 
 import requests
-import yaml
 from loguru import logger
 
 REDDIT_LINK = "https://www.reddit.com"
@@ -118,7 +117,7 @@ def get_reddit_posts_json(
     subreddit_link = f"{REDDIT_LINK}/r/{subreddit}"
     if exclude_flairs or include_flairs:
         flair_query = generate_flair_query(exclude_flairs, include_flairs)
-        url = f"{subreddit_link}/search.json?q={flair_query}&sort=top&t={time_period}&limit={limit}&restrict_sr=on"
+        url = f"{subreddit_link}/search.json?q={flair_query}&sort=top&t={time_period}&limit={limit}&restrict_sr=on"  # noqa: E501
     else:
         url = f"{subreddit_link}/top.json?t={time_period}&limit={limit}"
 
@@ -151,32 +150,3 @@ def get_reddit_posts_json(
         )
 
     return posts
-
-
-with open("bot/config/reddit.yaml") as f:
-    REDDIT_SUBREDDITS = yaml.safe_load(f)
-    logger.info(f"Loaded subreddits {REDDIT_SUBREDDITS}")
-
-
-config = load_config_from_dict(REDDIT_SUBREDDITS)
-
-for sub in config.subreddits:
-    get_reddit_posts_json(
-        subreddit=sub.name,
-        time_period=sub.period,
-        limit=sub.limit,
-        exclude_flairs=sub.exclude_flairs,
-        include_flairs=sub.include_flairs,
-    )
-
-
-# # Example usage
-# if __name__ == "__main__":
-#     subreddit_name = "python"
-#     posts = get_reddit_posts_json(subreddit_name, time_period="month")
-#     print(len(posts))
-#     for post in posts[:5]:  # Display the top 5 posts
-#         print(post)
-#         print(
-#             f"Title: {post['title']}\nLink: {post['link']}\nAuthor: {post['author']}\nScore: {post['score']}\nComments: {post['num_comments']}\n"
-#         )
